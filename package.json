@@ -23,9 +23,12 @@
   "main": "dist/index.js",
   "module": "dist/index.module.js",
   "unpkg": "dist/index.umd.js",
+  "types": "dist/index.d.ts",
+  "typings": "dist/index.d.ts",
   "files": [
     "dist"
   ],
+  "sideEffects": false,
   "scripts": {
     "lint": "eslint './src/**/*.{js,jsx,ts,tsx}'",
     "build": "microbundle --jsx",
