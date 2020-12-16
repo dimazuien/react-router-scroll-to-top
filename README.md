@@ -41,3 +41,7 @@ const App = () => (
 ```
 
 This package works only in versions of React that support hooks.
+
+## Support
+
+If you like this package and want to support it, you can fund us on [Patreon](https://www.patreon.com/dimazuien)
