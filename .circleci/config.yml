@@ -52,8 +52,8 @@ jobs:
 workflows:
   release:
     jobs:
-      - lint-code:
-      - lint-commit-message:
+      - lint-code
+      - lint-commit-message
       - release:
           filters:
             branches:
