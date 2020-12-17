@@ -56,12 +56,12 @@ jobs:
 workflows:
   release:
     jobs:
-      - lint-code
-        <<: *main_only
-      - lint-commit-message
-        <<: *main_only
-      - release
-        <<: *main_only
-        requires:
-          - lint-code
-          - lint-commit-message
+      - lint-code:
+          <<: *main_only
+      - lint-commit-message:
+          <<: *main_only
+      - release:
+          <<: *main_only
+          requires:
+            - lint-code
+            - lint-commit-message
