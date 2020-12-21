@@ -11,7 +11,7 @@ import {
 import useScrollToTop from '../src/useScrollToTop';
 
 describe('useScrollToTop', () => {
-  it('should be called when the app is rendered', () => {
+  it('should trigger scrolling to top when the app is rendered', () => {
     const App: FC = () => {
       useScrollToTop();
 
@@ -30,7 +30,7 @@ describe('useScrollToTop', () => {
     expect(window.scrollTo).toHaveBeenLastCalledWith(0, 0);
   });
 
-  it('should be called when redirected after link click', () => {
+  it('should trigger scrolling to top when redirected after link click', () => {
     const App: FC = () => {
       useScrollToTop();
 
@@ -62,7 +62,7 @@ describe('useScrollToTop', () => {
     expect(window.scrollTo).toHaveBeenLastCalledWith(0, 0);
   });
 
-  it('should not be called when redirected after link click with false "scrollToTop"', () => {
+  it('should not trigger scrolling to top when redirected after link click with false "scrollToTop"', () => {
     const App: FC = () => {
       useScrollToTop();
 
@@ -102,7 +102,7 @@ describe('useScrollToTop', () => {
     expect(window.scrollTo).toHaveBeenCalledTimes(1);
   });
 
-  it('should be called when redirected by using "history.push"', () => {
+  it('should trigger scrolling to top when redirected by using "history.push"', () => {
     const App: FC = () => {
       useScrollToTop();
 
@@ -142,7 +142,7 @@ describe('useScrollToTop', () => {
     expect(window.scrollTo).toHaveBeenLastCalledWith(0, 0);
   });
 
-  it('should not be called when redirected by using "history.push" with false "scrollToTop"', () => {
+  it('should not trigger scrolling to top when redirected by using "history.push" with false "scrollToTop"', () => {
     const App: FC = () => {
       useScrollToTop();
 
