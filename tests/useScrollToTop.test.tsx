@@ -1,4 +1,5 @@
-import { fireEvent, render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import React, { FC } from 'react';
 import {
   Link,
@@ -10,10 +11,6 @@ import {
 import useScrollToTop from '../src/useScrollToTop';
 
 describe('useScrollToTop', () => {
-  it('should be defined', () => {
-    expect(useScrollToTop).toBeDefined();
-  });
-
   it('should be called when the app is rendered', () => {
     const App: FC = () => {
       useScrollToTop();
@@ -29,8 +26,8 @@ describe('useScrollToTop', () => {
       </MemoryRouter>,
     );
 
-    expect((window.scrollTo as jest.Mock).mock.calls.length).toBe(1);
-    expect((window.scrollTo as jest.Mock).mock.calls[0]).toEqual([0, 0]);
+    expect(window.scrollTo).toHaveBeenCalledTimes(1);
+    expect(window.scrollTo).toHaveBeenLastCalledWith(0, 0);
   });
 
   it('should be called when redirected after link click', () => {
@@ -45,11 +42,7 @@ describe('useScrollToTop', () => {
           />
           <Route
             path="/"
-            component={() => (
-              <Link to="/another-page" data-testid="link">
-                Link
-              </Link>
-            )}
+            component={() => <Link to="/another-page">Link</Link>}
           />
         </Switch>
       );
@@ -57,22 +50,16 @@ describe('useScrollToTop', () => {
 
     window.scrollTo = jest.fn();
 
-    const app = render(
+    render(
       <MemoryRouter>
         <App />
       </MemoryRouter>,
     );
 
-    fireEvent(
-      app.getByTestId('link'),
-      new MouseEvent('click', {
-        bubbles: true,
-        cancelable: true,
-      }),
-    );
+    userEvent.click(screen.getByRole('link'));
 
-    expect((window.scrollTo as jest.Mock).mock.calls.length).toBe(2);
-    expect((window.scrollTo as jest.Mock).mock.calls[1]).toEqual([0, 0]);
+    expect(window.scrollTo).toHaveBeenCalledTimes(2);
+    expect(window.scrollTo).toHaveBeenLastCalledWith(0, 0);
   });
 
   it('should not be called when redirected after link click with false "scrollToTop"', () => {
@@ -93,7 +80,6 @@ describe('useScrollToTop', () => {
                   pathname: '/another-page',
                   state: { scrollToTop: false },
                 }}
-                data-testid="link"
               >
                 Link
               </Link>
@@ -105,21 +91,15 @@ describe('useScrollToTop', () => {
 
     window.scrollTo = jest.fn();
 
-    const app = render(
+    render(
       <MemoryRouter>
         <App />
       </MemoryRouter>,
     );
 
-    fireEvent(
-      app.getByTestId('link'),
-      new MouseEvent('click', {
-        bubbles: true,
-        cancelable: true,
-      }),
-    );
+    userEvent.click(screen.getByRole('link'));
 
-    expect((window.scrollTo as jest.Mock).mock.calls.length).toBe(1);
+    expect(window.scrollTo).toHaveBeenCalledTimes(1);
   });
 
   it('should be called when redirected by using "history.push"', () => {
@@ -138,11 +118,7 @@ describe('useScrollToTop', () => {
               const { push } = useHistory();
 
               return (
-                <button
-                  type="button"
-                  onClick={() => push('/another-page')}
-                  data-testid="button"
-                >
+                <button type="button" onClick={() => push('/another-page')}>
                   Button
                 </button>
               );
@@ -154,22 +130,16 @@ describe('useScrollToTop', () => {
 
     window.scrollTo = jest.fn();
 
-    const app = render(
+    render(
       <MemoryRouter>
         <App />
       </MemoryRouter>,
     );
 
-    fireEvent(
-      app.getByTestId('button'),
-      new MouseEvent('click', {
-        bubbles: true,
-        cancelable: true,
-      }),
-    );
+    userEvent.click(screen.getByRole('button'));
 
-    expect((window.scrollTo as jest.Mock).mock.calls.length).toBe(2);
-    expect((window.scrollTo as jest.Mock).mock.calls[1]).toEqual([0, 0]);
+    expect(window.scrollTo).toHaveBeenCalledTimes(2);
+    expect(window.scrollTo).toHaveBeenLastCalledWith(0, 0);
   });
 
   it('should not be called when redirected by using "history.push" with false "scrollToTop"', () => {
@@ -191,7 +161,6 @@ describe('useScrollToTop', () => {
                 <button
                   type="button"
                   onClick={() => push('/another-page', { scrollToTop: false })}
-                  data-testid="button"
                 >
                   Button
                 </button>
@@ -204,20 +173,14 @@ describe('useScrollToTop', () => {
 
     window.scrollTo = jest.fn();
 
-    const app = render(
+    render(
       <MemoryRouter>
         <App />
       </MemoryRouter>,
     );
 
-    fireEvent(
-      app.getByTestId('button'),
-      new MouseEvent('click', {
-        bubbles: true,
-        cancelable: true,
-      }),
-    );
+    userEvent.click(screen.getByRole('button'));
 
-    expect((window.scrollTo as jest.Mock).mock.calls.length).toBe(1);
+    expect(window.scrollTo).toHaveBeenCalledTimes(1);
   });
 });
