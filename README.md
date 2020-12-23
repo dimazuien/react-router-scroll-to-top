@@ -14,7 +14,11 @@ ScrollToTop is a React component that scrolls to the top of a page when the curr
 ## Installation
 
 ```shell
+# npm
 npm install react-router-scroll-to-top
+
+# yarn
+yarn add react-router-scroll-to-top
 ```
 
 ## Usage
