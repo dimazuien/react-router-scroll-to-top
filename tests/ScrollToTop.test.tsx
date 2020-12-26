@@ -33,17 +33,13 @@ describe('ScrollToTop', () => {
   });
 
   it('should work if used as a wrapper', () => {
-    const App: FC = () => (
-      <ScrollToTop>
-        <div>Hello, world!</div>
-      </ScrollToTop>
-    );
-
     window.scrollTo = jest.fn();
 
     const { baseElement } = render(
       <MemoryRouter>
-        <App />
+        <ScrollToTop>
+          <div>Hello, world!</div>
+        </ScrollToTop>
       </MemoryRouter>,
     );
 
@@ -53,8 +49,10 @@ describe('ScrollToTop', () => {
   });
 
   it('should trigger scrolling to top when redirected after link click', () => {
-    const App: FC = () => (
-      <>
+    window.scrollTo = jest.fn();
+
+    render(
+      <MemoryRouter>
         <ScrollToTop />
         <Switch>
           <Route
@@ -66,14 +64,6 @@ describe('ScrollToTop', () => {
             component={() => <Link to="/another-page">Link</Link>}
           />
         </Switch>
-      </>
-    );
-
-    window.scrollTo = jest.fn();
-
-    render(
-      <MemoryRouter>
-        <App />
       </MemoryRouter>,
     );
 
@@ -123,8 +113,10 @@ describe('ScrollToTop', () => {
   });
 
   it('should trigger scrolling to top when redirected by using "history.push"', () => {
-    const App: FC = () => (
-      <>
+    window.scrollTo = jest.fn();
+
+    render(
+      <MemoryRouter>
         <ScrollToTop />
         <Switch>
           <Route
@@ -144,14 +136,6 @@ describe('ScrollToTop', () => {
             }}
           />
         </Switch>
-      </>
-    );
-
-    window.scrollTo = jest.fn();
-
-    render(
-      <MemoryRouter>
-        <App />
       </MemoryRouter>,
     );
 
@@ -162,8 +146,10 @@ describe('ScrollToTop', () => {
   });
 
   it('should not trigger scrolling to top when redirected by using "history.push" with false "scrollToTop"', () => {
-    const App: FC = () => (
-      <>
+    window.scrollTo = jest.fn();
+
+    render(
+      <MemoryRouter>
         <ScrollToTop />
         <Switch>
           <Route
@@ -186,14 +172,6 @@ describe('ScrollToTop', () => {
             }}
           />
         </Switch>
-      </>
-    );
-
-    window.scrollTo = jest.fn();
-
-    render(
-      <MemoryRouter>
-        <App />
       </MemoryRouter>,
     );
 
