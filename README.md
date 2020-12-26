@@ -28,7 +28,7 @@ const App = () => (
 );
 ```
 
-Read [the documentation](docs/index.md) for more details.
+Read [the documentation](docs/index.md) for more details. You can also play with a [demo](https://codesandbox.io/s/react-router-scroll-to-top-n1mg3).
 
 ## Support
 
