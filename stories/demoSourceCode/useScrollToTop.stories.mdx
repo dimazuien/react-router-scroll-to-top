@@ -1,0 +1,43 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Demo Source Code/useScrollToTop" />
+
+```javascript
+import React from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { useScrollToTop } from 'react-router-scroll-to-top';
+import PageFactory from './utils/PageFactory';
+
+const App = () => {
+  useScrollToTop();
+
+  return (
+    <Switch>
+      <Route
+        path="/another-page"
+        component={PageFactory({
+          currentPageTitle: 'Page 2',
+          anotherPageTitle: 'Page 1',
+          anotherPagePath: '/',
+        })}
+      />
+      <Route
+        path="/"
+        component={PageFactory({
+          currentPageTitle: 'Page 1',
+          anotherPageTitle: 'Page 2',
+          anotherPagePath: '/another-page',
+        })}
+      />
+    </Switch>
+  );
+};
+
+const Demo = () => (
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>
+);
+
+export default Demo;
+```
