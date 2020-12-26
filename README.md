@@ -9,42 +9,26 @@
 ![CircleCI status](https://img.shields.io/circleci/build/github/dimazuien/react-router-scroll-to-top/main?label=circleci)
 ![Code scanning](https://img.shields.io/github/workflow/status/dimazuien/react-router-scroll-to-top/CodeQL?label=code%20scanning)
 
-ScrollToTop is a React component that scrolls to the top of a page when the current location gets changed. Since React Router doesn't provide out-of-the-box support for scroll restoration due to [browsers having started handling it on their own](https://majido.github.io/scroll-restoration-proposal/history-based-api.html), this package implements a component for scrolling to top manually as it is given in [React Router docs](https://reactrouter.com/web/guides/scroll-restoration#scroll-restoration-scroll-to-top).
-
-## Installation
-
-```shell
-# npm
-npm install react-router-scroll-to-top
-
-# yarn
-yarn add react-router-scroll-to-top
-```
+ScrollToTop is a React component that scrolls to the top of a page when the current location gets changed. Since React Router doesn't provide out-of-the-box support for scroll restoration due to [browsers having started handling it on their own](https://majido.github.io/scroll-restoration-proposal/history-based-api.html), this package implements a component for scrolling to the top manually as it is given in [React Router docs](https://reactrouter.com/web/guides/scroll-restoration#scroll-restoration-scroll-to-top).
 
 ## Usage
+
+```shell
+npm install react-router-scroll-to-top
+```
 
 ```jsx
 import ScrollToTop from 'react-router-scroll-to-top';
 
-// wrap app components with ScrollToTop
 const App = () => (
-  <Router>
-    <ScrollToTop>
-      <App />
-    </ScrollToTop>
-  </Router>
-);
-
-// or just render it bare
-const App = () => (
-  <Router>
+  <BrowserRouter>
     <ScrollToTop />
-    <App />
-  </Router>
+    <Switch>{/* routes */}</Switch>
+  </BrowserRouter>
 );
 ```
 
-This package works only in versions of React that support hooks.
+Read [the documentation](docs/index.md) for more details.
 
 ## Support
 
