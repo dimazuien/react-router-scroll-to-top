@@ -1,0 +1,69 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Demo Source Code/utils/PageFactory" />
+
+```jsx
+import React from 'react';
+import { Link, useHistory } from 'react-router-dom';
+import ScrollToTop from 'react-router-scroll-to-top';
+import { LoremIpsum } from 'lorem-ipsum';
+import 'github-markdown-css';
+
+const lorem = new LoremIpsum();
+const text = lorem.generateParagraphs(30);
+
+const PageFactory = ({
+  currentPageTitle,
+  anotherPageTitle,
+  anotherPagePath,
+}) => () => {
+  const { push } = useHistory();
+
+  return (
+    <main className="markdown-body">
+      <h1>{currentPageTitle}</h1>
+      <Link to={anotherPagePath}>Link to {anotherPageTitle}</Link>
+      <br />
+      <Link to={{ pathname: anotherPagePath, state: { scrollToTop: false } }}>
+        Link to {anotherPageTitle} (with disabled scrolling to top)
+      </Link>
+      <br />
+      <button type="button" onClick={() => push(anotherPagePath)}>
+        Button that redirects to {anotherPageTitle}
+      </button>
+      <br />
+      <button
+        type="button"
+        onClick={() => push(anotherPagePath, { scrollToTop: false })}
+      >
+        Button that redirects to {anotherPageTitle} (with disabled scrolling to
+        top)
+      </button>
+      <br />
+      * there also are the same links and buttons at the bottom of the page
+      <br />
+      {text}
+      <br />
+      <Link to={anotherPagePath}>{anotherPageTitle}</Link>
+      <br />
+      <Link to={{ pathname: anotherPagePath, state: { scrollToTop: false } }}>
+        {anotherPageTitle} (with disabled scrolling to top)
+      </Link>
+      <br />
+      <button type="button" onClick={() => push(anotherPagePath)}>
+        Button that redirects to {anotherPageTitle}
+      </button>
+      <br />
+      <button
+        type="button"
+        onClick={() => push(anotherPagePath, { scrollToTop: false })}
+      >
+        Button that redirects to {anotherPageTitle} (with disabled scrolling to
+        top)
+      </button>
+    </main>
+  );
+};
+
+export default PageFactory;
+```
