@@ -8,6 +8,7 @@
 [![GitHub Stars](https://img.shields.io/github/stars/dimazuien/react-router-scroll-to-top)](https://github.com/dimazuien/react-router-scroll-to-top/stargazers)
 ![CircleCI status](https://img.shields.io/circleci/build/github/dimazuien/react-router-scroll-to-top/main?label=circleci)
 ![Code scanning](https://img.shields.io/github/workflow/status/dimazuien/react-router-scroll-to-top/CodeQL?label=code%20scanning)
+[![Storybook](https://img.shields.io/badge/demos-%F0%9F%9A%80-yellow.svg?label=storybook)](https://dimazuien.github.io/react-router-scroll-to-top)
 
 ScrollToTop is a React component that scrolls to the top of a page when the current location gets changed. Since React Router doesn't provide out-of-the-box support for scroll restoration due to [browsers having started handling it on their own](https://majido.github.io/scroll-restoration-proposal/history-based-api.html), this package implements a component for scrolling to the top manually as it is given in [React Router docs](https://reactrouter.com/web/guides/scroll-restoration#scroll-restoration-scroll-to-top).
 
