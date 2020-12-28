@@ -1,6 +1,5 @@
 ## [1.1.1](https://github.com/dimazuien/react-router-scroll-to-top/compare/v1.1.0...v1.1.1) (2020-12-28)
 
-
 ### Bug Fixes
 
 * make ScrollToTop named export (before was default) ([ddfa28a](https://github.com/dimazuien/react-router-scroll-to-top/commit/ddfa28ad099606743c155ce833069dd231ab3c29))
