@@ -19,7 +19,7 @@ npm install react-router-scroll-to-top
 ```
 
 ```jsx
-import ScrollToTop from 'react-router-scroll-to-top';
+import { ScrollToTop } from 'react-router-scroll-to-top';
 
 const App = () => (
   <BrowserRouter>

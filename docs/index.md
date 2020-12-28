@@ -29,7 +29,7 @@ import { useScrollToTop } from 'react-router-scroll-to-top';
 - a component that just runs the hook under the hood:
 
 ```javascript
-import ScrollToTop from 'react-router-scroll-to-top';
+import { ScrollToTop } from 'react-router-scroll-to-top';
 ```
 
 ## Setting up
