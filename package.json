@@ -28,10 +28,13 @@
   "browser": "dist/index.js",
   "module": "dist/index.module.js",
   "unpkg": "dist/index.umd.js",
-  "types": "dist/index.d.ts",
-  "typings": "dist/index.d.ts",
+  "types": "index.d.ts",
+  "typings": "index.d.ts",
   "files": [
-    "dist"
+    "dist",
+    "index.d.ts",
+    "ScrollToTop.d.ts",
+    "useScrollToTop.d.ts"
   ],
   "sideEffects": false,
   "scripts": {

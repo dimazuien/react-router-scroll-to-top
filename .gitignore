@@ -1,6 +1,9 @@
 # dependencies
-/node_modules
+node_modules
 
 # builds
-/dist
-/storybook-static
+dist
+storybook-static
+index.d.ts
+ScrollToTop.d.ts
+useScrollToTop.d.ts
