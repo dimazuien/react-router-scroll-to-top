@@ -1,5 +1,5 @@
 import '@testing-library/jest-dom/extend-expect';
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import React, { FC } from 'react';
 import {
@@ -48,7 +48,7 @@ describe('ScrollToTop', () => {
     expect(baseElement).toContainHTML('<div>Hello, world!</div>');
   });
 
-  it('should trigger scrolling to top when redirected after link click', () => {
+  it('should trigger scrolling to top when redirected after link click', async () => {
     window.scrollTo = jest.fn();
 
     render(
@@ -69,8 +69,10 @@ describe('ScrollToTop', () => {
 
     userEvent.click(screen.getByRole('link'));
 
-    expect(window.scrollTo).toHaveBeenCalledTimes(2);
-    expect(window.scrollTo).toHaveBeenLastCalledWith(0, 0);
+    await waitFor(() => {
+      expect(window.scrollTo).toHaveBeenCalledTimes(2);
+      expect(window.scrollTo).toHaveBeenLastCalledWith(0, 0);
+    });
   });
 
   it('should not trigger scrolling to top when redirected after link click with false "scrollToTop"', () => {
@@ -112,7 +114,7 @@ describe('ScrollToTop', () => {
     expect(window.scrollTo).toHaveBeenCalledTimes(1);
   });
 
-  it('should trigger scrolling to top when redirected by using "history.push"', () => {
+  it('should trigger scrolling to top when redirected by using "history.push"', async () => {
     window.scrollTo = jest.fn();
 
     render(
@@ -141,8 +143,10 @@ describe('ScrollToTop', () => {
 
     userEvent.click(screen.getByRole('button'));
 
-    expect(window.scrollTo).toHaveBeenCalledTimes(2);
-    expect(window.scrollTo).toHaveBeenLastCalledWith(0, 0);
+    await waitFor(() => {
+      expect(window.scrollTo).toHaveBeenCalledTimes(2);
+      expect(window.scrollTo).toHaveBeenLastCalledWith(0, 0);
+    });
   });
 
   it('should not trigger scrolling to top when redirected by using "history.push" with false "scrollToTop"', () => {
