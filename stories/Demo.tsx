@@ -1,4 +1,4 @@
-import 'github-markdown-css';
+import 'github-markdown-css/github-markdown-light.css';
 import { LoremIpsum } from 'lorem-ipsum';
 import React, { FC } from 'react';
 import {
