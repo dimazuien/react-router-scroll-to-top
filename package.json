@@ -89,7 +89,7 @@
     "github-markdown-css": "5.0.0",
     "husky": "7.0.4",
     "jest": "27.3.1",
-    "lint-staged": "11.2.6",
+    "lint-staged": "12.0.2",
     "lorem-ipsum": "2.0.4",
     "microbundle": "0.14.1",
     "pinst": "2.1.6",
