@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom/extend-expect';
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import React, { FC } from 'react';
+import React, { useCallback } from 'react';
 import {
   Link,
   MemoryRouter,
@@ -13,12 +13,14 @@ import ScrollToTop from '../src/ScrollToTop';
 
 describe('ScrollToTop', () => {
   it('should trigger scrolling to top when the app is rendered', () => {
-    const App: FC = () => (
-      <>
-        <ScrollToTop />
-        <div>Hello, world!</div>
-      </>
-    );
+    function App() {
+      return (
+        <>
+          <ScrollToTop />
+          <div>Hello, world!</div>
+        </>
+      );
+    }
 
     window.scrollTo = jest.fn();
 
@@ -69,37 +71,37 @@ describe('ScrollToTop', () => {
 
     userEvent.click(screen.getByRole('link'));
 
-    await waitFor(() => {
-      expect(window.scrollTo).toHaveBeenCalledTimes(2);
-      expect(window.scrollTo).toHaveBeenLastCalledWith(0, 0);
-    });
+    await waitFor(() => expect(window.scrollTo).toHaveBeenCalledTimes(2));
+    expect(window.scrollTo).toHaveBeenLastCalledWith(0, 0);
   });
 
   it('should not trigger scrolling to top when redirected after link click with false "scrollToTop"', () => {
-    const App: FC = () => (
-      <>
-        <ScrollToTop />
-        <Switch>
-          <Route
-            path="/another-page"
-            component={() => <div>Hello, world!</div>}
-          />
-          <Route
-            path="/"
-            component={() => (
-              <Link
-                to={{
-                  pathname: '/another-page',
-                  state: { scrollToTop: false },
-                }}
-              >
-                Link
-              </Link>
-            )}
-          />
-        </Switch>
-      </>
-    );
+    function App() {
+      const Page = useCallback(
+        () => (
+          <Link
+            to={{
+              pathname: '/another-page',
+              state: { scrollToTop: false },
+            }}
+          >
+            Link
+          </Link>
+        ),
+        [],
+      );
+      const AnotherPage = useCallback(() => <div>Hello, world!</div>, []);
+
+      return (
+        <>
+          <ScrollToTop />
+          <Switch>
+            <Route path="/" component={Page} />
+            <Route path="/another-page" component={AnotherPage} />
+          </Switch>
+        </>
+      );
+    }
 
     window.scrollTo = jest.fn();
 
@@ -143,10 +145,8 @@ describe('ScrollToTop', () => {
 
     userEvent.click(screen.getByRole('button'));
 
-    await waitFor(() => {
-      expect(window.scrollTo).toHaveBeenCalledTimes(2);
-      expect(window.scrollTo).toHaveBeenLastCalledWith(0, 0);
-    });
+    await waitFor(() => expect(window.scrollTo).toHaveBeenCalledTimes(2));
+    expect(window.scrollTo).toHaveBeenLastCalledWith(0, 0);
   });
 
   it('should not trigger scrolling to top when redirected by using "history.push" with false "scrollToTop"', () => {

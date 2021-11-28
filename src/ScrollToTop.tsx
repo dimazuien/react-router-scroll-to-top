@@ -1,10 +1,12 @@
-import React, { FC } from 'react';
+import React, { Children, ReactNode } from 'react';
 import useScrollToTop from './useScrollToTop';
 
-const ScrollToTop: FC = ({ children }) => {
+type Props = Readonly<{ children?: ReactNode }>;
+
+function ScrollToTop({ children }: Props): JSX.Element {
   useScrollToTop();
 
-  return <>{children}</>;
-};
+  return <>{Children.toArray(children)}</>;
+}
 
 export default ScrollToTop;
