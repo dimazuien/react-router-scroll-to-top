@@ -1,0 +1,15 @@
+{
+  "cSpell.words": [
+    "automerge",
+    "codeql",
+    "commitlint",
+    "dima",
+    "dimazuien",
+    "pinst",
+    "postpublish",
+    "zuien"
+  ],
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": false
+  }
+}
