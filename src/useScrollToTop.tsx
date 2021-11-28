@@ -1,14 +1,8 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
-type ScrollToTopState =
-  | Readonly<{
-      scrollToTop?: boolean;
-    }>
-  | undefined;
-
 const useScrollToTop = (): void => {
-  const { pathname, state } = useLocation<ScrollToTopState>();
+  const { pathname, state } = useLocation();
 
   useEffect(() => {
     if (state?.scrollToTop === false) return;

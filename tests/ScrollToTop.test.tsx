@@ -7,8 +7,8 @@ import {
   Link,
   MemoryRouter,
   Route,
-  Switch,
-  useHistory,
+  Routes,
+  useNavigate,
 } from 'react-router-dom';
 
 import ScrollToTop from '../src/ScrollToTop';
@@ -53,21 +53,26 @@ describe('ScrollToTop', () => {
   });
 
   it('should trigger scrolling to top when redirected after link click', async () => {
+    function App() {
+      const Page = useCallback(() => <Link to="/another-page">Link</Link>, []);
+      const AnotherPage = useCallback(() => <div>Hello, world!</div>, []);
+
+      return (
+        <>
+          <ScrollToTop />
+          <Routes>
+            <Route path="/" element={<Page />} />
+            <Route path="/another-page" element={<AnotherPage />} />
+          </Routes>
+        </>
+      );
+    }
+
     window.scrollTo = jest.fn();
 
     render(
       <MemoryRouter>
-        <ScrollToTop />
-        <Switch>
-          <Route
-            path="/another-page"
-            component={() => <div>Hello, world!</div>}
-          />
-          <Route
-            path="/"
-            component={() => <Link to="/another-page">Link</Link>}
-          />
-        </Switch>
+        <App />
       </MemoryRouter>,
     );
 
@@ -81,12 +86,7 @@ describe('ScrollToTop', () => {
     function App() {
       const Page = useCallback(
         () => (
-          <Link
-            to={{
-              pathname: '/another-page',
-              state: { scrollToTop: false },
-            }}
-          >
+          <Link to="/another-page" state={{ scrollToTop: false }}>
             Link
           </Link>
         ),
@@ -97,10 +97,10 @@ describe('ScrollToTop', () => {
       return (
         <>
           <ScrollToTop />
-          <Switch>
-            <Route path="/" component={Page} />
-            <Route path="/another-page" component={AnotherPage} />
-          </Switch>
+          <Routes>
+            <Route path="/" element={<Page />} />
+            <Route path="/another-page" element={<AnotherPage />} />
+          </Routes>
         </>
       );
     }
@@ -118,30 +118,35 @@ describe('ScrollToTop', () => {
     expect(window.scrollTo).toHaveBeenCalledTimes(1);
   });
 
-  it('should trigger scrolling to top when redirected by using "history.push"', async () => {
+  it('should trigger scrolling to top when redirected by using "history.navigate"', async () => {
+    function App() {
+      const Page = useCallback(() => {
+        const navigate = useNavigate();
+
+        return (
+          <button type="button" onClick={() => navigate('/another-page')}>
+            Button
+          </button>
+        );
+      }, []);
+      const AnotherPage = useCallback(() => <div>Hello, world!</div>, []);
+
+      return (
+        <>
+          <ScrollToTop />
+          <Routes>
+            <Route path="/" element={<Page />} />
+            <Route path="/another-page" element={<AnotherPage />} />
+          </Routes>
+        </>
+      );
+    }
+
     window.scrollTo = jest.fn();
 
     render(
       <MemoryRouter>
-        <ScrollToTop />
-        <Switch>
-          <Route
-            path="/another-page"
-            component={() => <div>Hello, world!</div>}
-          />
-          <Route
-            path="/"
-            component={() => {
-              const { push } = useHistory();
-
-              return (
-                <button type="button" onClick={() => push('/another-page')}>
-                  Button
-                </button>
-              );
-            }}
-          />
-        </Switch>
+        <App />
       </MemoryRouter>,
     );
 
@@ -151,33 +156,40 @@ describe('ScrollToTop', () => {
     expect(window.scrollTo).toHaveBeenLastCalledWith(0, 0);
   });
 
-  it('should not trigger scrolling to top when redirected by using "history.push" with false "scrollToTop"', () => {
+  it('should not trigger scrolling to top when redirected by using "history.navigate" with false "scrollToTop"', () => {
+    function App() {
+      const Page = useCallback(() => {
+        const navigate = useNavigate();
+
+        return (
+          <button
+            type="button"
+            onClick={() =>
+              navigate('/another-page', { state: { scrollToTop: false } })
+            }
+          >
+            Button
+          </button>
+        );
+      }, []);
+      const AnotherPage = useCallback(() => <div>Hello, world!</div>, []);
+
+      return (
+        <>
+          <ScrollToTop />
+          <Routes>
+            <Route path="/" element={<Page />} />
+            <Route path="/another-page" element={<AnotherPage />} />
+          </Routes>
+        </>
+      );
+    }
+
     window.scrollTo = jest.fn();
 
     render(
       <MemoryRouter>
-        <ScrollToTop />
-        <Switch>
-          <Route
-            path="/another-page"
-            component={() => <div>Hello, world!</div>}
-          />
-          <Route
-            path="/"
-            component={() => {
-              const { push } = useHistory();
-
-              return (
-                <button
-                  type="button"
-                  onClick={() => push('/another-page', { scrollToTop: false })}
-                >
-                  Button
-                </button>
-              );
-            }}
-          />
-        </Switch>
+        <App />
       </MemoryRouter>,
     );
 
