@@ -8,5 +8,8 @@
     "pinst",
     "postpublish",
     "zuien"
-  ]
+  ],
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": false
+  }
 }
