@@ -23,7 +23,7 @@ import { ScrollToTop } from 'react-router-scroll-to-top';
 const App = () => (
   <BrowserRouter>
     <ScrollToTop />
-    <Switch>{/* routes */}</Switch>
+    <Routes>{/* routes */}</Routes>
   </BrowserRouter>
 );
 ```

@@ -34,25 +34,25 @@ import { ScrollToTop } from 'react-router-scroll-to-top';
 
 ## Setting up
 
-- with a hook:
+- as a hook:
 
 ```jsx
 const App = () => {
   useScrollToTop();
 
-  return <Switch>{/* routes */}</Switch>;
+  return <Routes>{/* routes */}</Routes>;
 };
 ```
 
 An important note: don't use this hook in a component with a router (`BrowserRouter`, `MemoryRouter`, etc.).
 
-- with a component (can be used in a component with a router):
+- as a component (can be used in a component with a router):
 
 ```jsx
 const App = () => (
   <BrowserRouter>
     <ScrollToTop />
-    <Switch>{/* routes */}</Switch>
+    <Routes>{/* routes */}</Routes>
   </BrowserRouter>
 );
 ```
@@ -63,7 +63,7 @@ or
 const App = () => (
   <BrowserRouter>
     <ScrollToTop>
-      <Switch>{/* routes */}</Switch>
+      <Routes>{/* routes */}</Routes>
     </ScrollToTop>
   </BrowserRouter>
 );
@@ -76,13 +76,13 @@ That's it. The package doesn't demand you to do anything else. Just keep using `
 If in some cases you need to disable scrolling to the top of a page, pass `{ scrollToTop: false }` to the state:
 
 ```jsx
-<Link to={{ pathname: '/any-page', state: { scrollToTop: false } }}>
+<Link to="/any-page" state={{ scrollToTop: false }}>
   Any page
 </Link>
 ```
 
 ```javascript
-const { push } = useHistory();
+const navigate = useNavigate();
 
-push('/any-page', { scrollToTop: false });
+navigate('/any-page', { state: { scrollToTop: false } });
 ```
