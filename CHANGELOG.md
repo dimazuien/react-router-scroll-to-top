@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/dimazuien/react-router-scroll-to-top/compare/v1.1.2...v1.2.0) (2022-04-03)
+
+
+### Features
+
+* add support for react 18 ([94eeccd](https://github.com/dimazuien/react-router-scroll-to-top/commit/94eeccd9efe629769c2db4c46c358469fcdece01))
+
 ## [1.1.2](https://github.com/dimazuien/react-router-scroll-to-top/compare/v1.1.1...v1.1.2) (2021-02-22)
 
 
