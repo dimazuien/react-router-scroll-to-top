@@ -11,7 +11,7 @@ import {
   useNavigate,
 } from 'react-router-dom';
 
-import ScrollToTop from '../src/ScrollToTop';
+import ScrollToTop from '.';
 
 describe('ScrollToTop', () => {
   it('should trigger scrolling to top when the app is rendered', () => {
@@ -76,13 +76,15 @@ describe('ScrollToTop', () => {
       </MemoryRouter>,
     );
 
-    userEvent.click(screen.getByRole('link'));
+    await userEvent.click(screen.getByRole('link'));
 
-    await waitFor(() => expect(window.scrollTo).toHaveBeenCalledTimes(2));
+    await waitFor(() => {
+      expect(window.scrollTo).toHaveBeenCalledTimes(2);
+    });
     expect(window.scrollTo).toHaveBeenLastCalledWith(0, 0);
   });
 
-  it('should not trigger scrolling to top when redirected after link click with false "scrollToTop"', () => {
+  it('should not trigger scrolling to top when redirected after link click with false "scrollToTop"', async () => {
     function App() {
       const Page = useCallback(
         () => (
@@ -113,7 +115,7 @@ describe('ScrollToTop', () => {
       </MemoryRouter>,
     );
 
-    userEvent.click(screen.getByRole('link'));
+    await userEvent.click(screen.getByRole('link'));
 
     expect(window.scrollTo).toHaveBeenCalledTimes(1);
   });
@@ -124,49 +126,11 @@ describe('ScrollToTop', () => {
         const navigate = useNavigate();
 
         return (
-          <button type="button" onClick={() => navigate('/another-page')}>
-            Button
-          </button>
-        );
-      }, []);
-      const AnotherPage = useCallback(() => <div>Hello, world!</div>, []);
-
-      return (
-        <>
-          <ScrollToTop />
-          <Routes>
-            <Route path="/" element={<Page />} />
-            <Route path="/another-page" element={<AnotherPage />} />
-          </Routes>
-        </>
-      );
-    }
-
-    window.scrollTo = jest.fn();
-
-    render(
-      <MemoryRouter>
-        <App />
-      </MemoryRouter>,
-    );
-
-    userEvent.click(screen.getByRole('button'));
-
-    await waitFor(() => expect(window.scrollTo).toHaveBeenCalledTimes(2));
-    expect(window.scrollTo).toHaveBeenLastCalledWith(0, 0);
-  });
-
-  it('should not trigger scrolling to top when redirected by using "history.navigate" with false "scrollToTop"', () => {
-    function App() {
-      const Page = useCallback(() => {
-        const navigate = useNavigate();
-
-        return (
           <button
             type="button"
-            onClick={() =>
-              navigate('/another-page', { state: { scrollToTop: false } })
-            }
+            onClick={() => {
+              navigate('/another-page');
+            }}
           >
             Button
           </button>
@@ -193,7 +157,52 @@ describe('ScrollToTop', () => {
       </MemoryRouter>,
     );
 
-    userEvent.click(screen.getByRole('button'));
+    await userEvent.click(screen.getByRole('button'));
+
+    await waitFor(() => {
+      expect(window.scrollTo).toHaveBeenCalledTimes(2);
+    });
+    expect(window.scrollTo).toHaveBeenLastCalledWith(0, 0);
+  });
+
+  it('should not trigger scrolling to top when redirected by using "history.navigate" with false "scrollToTop"', async () => {
+    function App() {
+      const Page = useCallback(() => {
+        const navigate = useNavigate();
+
+        return (
+          <button
+            type="button"
+            onClick={() => {
+              navigate('/another-page', { state: { scrollToTop: false } });
+            }}
+          >
+            Button
+          </button>
+        );
+      }, []);
+      const AnotherPage = useCallback(() => <div>Hello, world!</div>, []);
+
+      return (
+        <>
+          <ScrollToTop />
+          <Routes>
+            <Route path="/" element={<Page />} />
+            <Route path="/another-page" element={<AnotherPage />} />
+          </Routes>
+        </>
+      );
+    }
+
+    window.scrollTo = jest.fn();
+
+    render(
+      <MemoryRouter>
+        <App />
+      </MemoryRouter>,
+    );
+
+    await userEvent.click(screen.getByRole('button'));
 
     expect(window.scrollTo).toHaveBeenCalledTimes(1);
   });
