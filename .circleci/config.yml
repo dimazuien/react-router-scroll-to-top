@@ -8,10 +8,6 @@ refs:
     docker:
       - image: cimg/base:current
   steps:
-    - &Versions
-      run:
-        name: Display versions
-        command: node -v && npm -v
     - &Install
       run:
         name: Install dependencies
@@ -59,7 +55,6 @@ jobs:
     steps:
       - checkout
       - node/install
-      - *Versions
       - *Install
       - *Test
       - *Lint
