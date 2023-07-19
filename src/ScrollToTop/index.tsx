@@ -1,6 +1,6 @@
 import React, { Children, ReactNode } from 'react';
 
-import useScrollToTop from './useScrollToTop';
+import useScrollToTop from '../useScrollToTop';
 
 type Props = Readonly<{ children?: ReactNode }>;
 
