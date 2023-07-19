@@ -44,7 +44,6 @@ jobs:
     steps:
       - checkout
       - node/install
-      - *Versions
       - *Install
       - *Test
       - *Lint
