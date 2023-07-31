@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/dimazuien/react-router-scroll-to-top/compare/v1.2.0...v1.2.1) (2023-07-31)
+
+
+### Bug Fixes
+
+* change webpack config to build nodejs-compatible bundle ([97b4245](https://github.com/dimazuien/react-router-scroll-to-top/commit/97b4245d1ecdcc93ad0f8285a946fd6b7ae8792d))
+
 # [1.2.0](https://github.com/dimazuien/react-router-scroll-to-top/compare/v1.1.2...v1.2.0) (2022-04-03)
 
 
