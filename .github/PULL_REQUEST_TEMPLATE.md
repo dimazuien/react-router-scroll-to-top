@@ -2,7 +2,7 @@
 
 - Closes <!-- issue number here. e.g. "Closes #1234" -->
 
-### User facing changelog
+### User-facing changelog
 
 <!-- Explain the change(s) for every user to read in our changelog. Examples: https://github.com/dimazuien/react-router-scroll-to-top/blob/main/CHANGELOG.md -->
 
