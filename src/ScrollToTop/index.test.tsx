@@ -1,8 +1,13 @@
 import '@testing-library/jest-dom/extend-expect';
 
-import { render, screen, waitFor } from '@testing-library/react';
+import {
+  render as rtlRender,
+  RenderOptions,
+  screen,
+  waitFor,
+} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import React, { useCallback } from 'react';
+import React, { ReactElement, useCallback } from 'react';
 import {
   Link,
   MemoryRouter,
@@ -12,6 +17,9 @@ import {
 } from 'react-router-dom';
 
 import ScrollToTop from '.';
+
+const render = (element: ReactElement, options?: RenderOptions) =>
+  rtlRender(element, { wrapper: MemoryRouter, ...options });
 
 describe('ScrollToTop', () => {
   it('should trigger scrolling to top when the app is rendered', () => {
@@ -26,11 +34,7 @@ describe('ScrollToTop', () => {
 
     window.scrollTo = jest.fn();
 
-    render(
-      <MemoryRouter>
-        <App />
-      </MemoryRouter>,
-    );
+    render(<App />);
 
     expect(window.scrollTo).toHaveBeenCalledTimes(1);
     expect(window.scrollTo).toHaveBeenLastCalledWith(0, 0);
@@ -40,11 +44,9 @@ describe('ScrollToTop', () => {
     window.scrollTo = jest.fn();
 
     const { baseElement } = render(
-      <MemoryRouter>
-        <ScrollToTop>
-          <div>Hello, world!</div>
-        </ScrollToTop>
-      </MemoryRouter>,
+      <ScrollToTop>
+        <div>Hello, world!</div>
+      </ScrollToTop>,
     );
 
     expect(window.scrollTo).toHaveBeenCalledTimes(1);
@@ -70,11 +72,7 @@ describe('ScrollToTop', () => {
 
     window.scrollTo = jest.fn();
 
-    render(
-      <MemoryRouter>
-        <App />
-      </MemoryRouter>,
-    );
+    render(<App />);
 
     await userEvent.click(screen.getByRole('link'));
 
@@ -109,11 +107,7 @@ describe('ScrollToTop', () => {
 
     window.scrollTo = jest.fn();
 
-    render(
-      <MemoryRouter>
-        <App />
-      </MemoryRouter>,
-    );
+    render(<App />);
 
     await userEvent.click(screen.getByRole('link'));
 
@@ -151,11 +145,7 @@ describe('ScrollToTop', () => {
 
     window.scrollTo = jest.fn();
 
-    render(
-      <MemoryRouter>
-        <App />
-      </MemoryRouter>,
-    );
+    render(<App />);
 
     await userEvent.click(screen.getByRole('button'));
 
@@ -196,11 +186,7 @@ describe('ScrollToTop', () => {
 
     window.scrollTo = jest.fn();
 
-    render(
-      <MemoryRouter>
-        <App />
-      </MemoryRouter>,
-    );
+    render(<App />);
 
     await userEvent.click(screen.getByRole('button'));
 
