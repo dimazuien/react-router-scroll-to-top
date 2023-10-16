@@ -90,7 +90,7 @@
     "prettier": "3.0.3",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-router-dom": "6.16.0",
+    "react-router-dom": "6.17.0",
     "semantic-release": "22.0.5",
     "ts-jest": "29.1.1",
     "ts-node": "10.9.1",
