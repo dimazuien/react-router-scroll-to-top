@@ -1,4 +1,4 @@
-import React, { Children, ReactNode } from 'react';
+import { Children, ReactNode } from 'react';
 
 import useScrollToTop from '../useScrollToTop';
 
