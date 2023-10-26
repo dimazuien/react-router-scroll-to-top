@@ -4,7 +4,7 @@ import {
   screen,
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import React, { ReactElement } from 'react';
+import { ReactElement } from 'react';
 import {
   Link,
   MemoryRouter,
