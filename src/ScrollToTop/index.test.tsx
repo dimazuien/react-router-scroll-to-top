@@ -65,7 +65,7 @@ describe('ScrollToTop', () => {
     expect.assertions(2);
 
     function Page() {
-      return <Link to="/another-page">Link</Link>;
+      return <Link to='/another-page'>Link</Link>;
     }
     function AnotherPage() {
       return <div>Hello, world!</div>;
@@ -75,8 +75,8 @@ describe('ScrollToTop', () => {
         <>
           <ScrollToTop />
           <Routes>
-            <Route path="/" element={<Page />} />
-            <Route path="/another-page" element={<AnotherPage />} />
+            <Route path='/' element={<Page />} />
+            <Route path='/another-page' element={<AnotherPage />} />
           </Routes>
         </>
       );
@@ -99,7 +99,7 @@ describe('ScrollToTop', () => {
 
     function Page() {
       return (
-        <Link to="/another-page" state={{ scrollToTop: false }}>
+        <Link to='/another-page' state={{ scrollToTop: false }}>
           Link
         </Link>
       );
@@ -112,8 +112,8 @@ describe('ScrollToTop', () => {
         <>
           <ScrollToTop />
           <Routes>
-            <Route path="/" element={<Page />} />
-            <Route path="/another-page" element={<AnotherPage />} />
+            <Route path='/' element={<Page />} />
+            <Route path='/another-page' element={<AnotherPage />} />
           </Routes>
         </>
       );
@@ -138,7 +138,7 @@ describe('ScrollToTop', () => {
 
       return (
         <button
-          type="button"
+          type='button'
           onClick={() => {
             navigate('/another-page');
           }}
@@ -155,8 +155,8 @@ describe('ScrollToTop', () => {
         <>
           <ScrollToTop />
           <Routes>
-            <Route path="/" element={<Page />} />
-            <Route path="/another-page" element={<AnotherPage />} />
+            <Route path='/' element={<Page />} />
+            <Route path='/another-page' element={<AnotherPage />} />
           </Routes>
         </>
       );
@@ -182,7 +182,7 @@ describe('ScrollToTop', () => {
 
       return (
         <button
-          type="button"
+          type='button'
           onClick={() => {
             navigate('/another-page', { state: { scrollToTop: false } });
           }}
@@ -199,8 +199,8 @@ describe('ScrollToTop', () => {
         <>
           <ScrollToTop />
           <Routes>
-            <Route path="/" element={<Page />} />
-            <Route path="/another-page" element={<AnotherPage />} />
+            <Route path='/' element={<Page />} />
+            <Route path='/another-page' element={<AnotherPage />} />
           </Routes>
         </>
       );
