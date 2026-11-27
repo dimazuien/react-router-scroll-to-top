@@ -14,6 +14,12 @@ npm install react-router-scroll-to-top
 yarn add react-router-scroll-to-top
 ```
 
+- pnpm:
+
+```shell
+pnpm add react-router-scroll-to-top
+```
+
 This package works only in versions of React that support hooks.
 
 ## Import
