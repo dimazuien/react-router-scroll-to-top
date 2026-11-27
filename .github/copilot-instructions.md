@@ -14,7 +14,7 @@ This is a React component library that provides scroll-to-top functionality for 
 - **Testing**: Jest with React Testing Library
 - **Linting**: ESLint with Airbnb config + TypeScript rules
 - **Formatting**: Prettier
-- **CI/CD**: Semantic Release with conventional commits, CircleCI for the main flow, GitHub Actions for code scanning and security
+- **CI/CD**: Semantic Release with conventional commits, GitHub Actions for the main flow, code scanning, and security
 
 ## Project Structure
 
