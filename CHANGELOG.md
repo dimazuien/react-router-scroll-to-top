@@ -1,3 +1,20 @@
+## [2.0.0](https://github.com/dimazuien/react-router-scroll-to-top/compare/v1.3.0...v2.0.0) (2026-11-27)
+
+### ⚠ BREAKING CHANGES
+
+- The build targets the browsers that Baseline lists as widely available, Chrome 125, Edge 125, Firefox 126, and Safari 17.5 today, instead of ES2020. The target moves forward with Baseline.
+- The package needs react-router 7 or 8 and React 18 or 19. Apps on React Router 5.1 or 6 should stay on version 1. React Router 7 apps that import from react-router-dom need react-router as a direct dependency too.
+- The exports map exposes only the root entry point and package.json, so deep imports no longer resolve. The UMD bundle in lib/ and the root index.d.ts are gone, and the code now targets ES2020 instead of ES5.
+
+### Features
+
+- support React Router 8 ([a5c7c0c](https://github.com/dimazuien/react-router-scroll-to-top/commit/a5c7c0c6cc3efedc2814003be2a8b959db6f37af))
+
+### Build System
+
+- ship ESM and CommonJS builds with an exports map ([2dd464e](https://github.com/dimazuien/react-router-scroll-to-top/commit/2dd464e592654c0c818588908adcff6fa95f506c))
+- target Baseline widely available browsers ([612f3e5](https://github.com/dimazuien/react-router-scroll-to-top/commit/612f3e546fc51c36ca2923505d57e8d211d5d495))
+
 ## [1.3.0](https://github.com/dimazuien/react-router-scroll-to-top/compare/v1.2.1...v1.3.0) (2026-11-27)
 
 ### Features
