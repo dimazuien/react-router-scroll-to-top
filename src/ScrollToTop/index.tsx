@@ -1,13 +1,20 @@
-import { Children, ReactNode } from 'react';
+import {
+  Children,
+  createElement,
+  Fragment,
+  ReactElement,
+  ReactNode,
+} from 'react';
 
 import useScrollToTop from '../useScrollToTop';
 
 type Props = Readonly<{ children?: ReactNode }>;
 
-function ScrollToTop({ children }: Props): JSX.Element {
+// createElement instead of JSX keeps React's JSX runtime out of the bundle.
+function ScrollToTop({ children }: Props): ReactElement {
   useScrollToTop();
 
-  return <>{Children.toArray(children)}</>;
+  return createElement(Fragment, null, Children.toArray(children));
 }
 
 export default ScrollToTop;
