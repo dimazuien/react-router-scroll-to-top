@@ -1,5 +1,6 @@
 # react-router-scroll-to-top
 
+<!-- prettier-ignore-start -->
 [![npm Version](https://img.shields.io/npm/v/react-router-scroll-to-top.svg)](https://www.npmjs.com/package/react-router-scroll-to-top)
 ![npm downloads per week](https://img.shields.io/npm/dw/react-router-scroll-to-top)
 ![Minified size](https://img.shields.io/bundlephobia/min/react-router-scroll-to-top)
@@ -8,6 +9,7 @@
 [![GitHub Stars](https://img.shields.io/github/stars/dimazuien/react-router-scroll-to-top)](https://github.com/dimazuien/react-router-scroll-to-top/stargazers)
 ![CI status](https://img.shields.io/github/actions/workflow/status/dimazuien/react-router-scroll-to-top/ci.yml?branch=main&label=ci)
 ![Code scanning](https://img.shields.io/github/actions/workflow/status/dimazuien/react-router-scroll-to-top/codeql-analysis.yml?branch=main)
+<!-- prettier-ignore-end -->
 
 ScrollToTop is a React component that scrolls to the top of the page when the location changes. It's for apps that use React Router 7 or 8 in declarative mode, with `<BrowserRouter>`, where React Router has no built-in scroll handling. For React Router 5.1 or 6, use version 1 of this package.
 
