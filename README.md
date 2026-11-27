@@ -9,7 +9,9 @@
 ![CI status](https://img.shields.io/github/actions/workflow/status/dimazuien/react-router-scroll-to-top/ci.yml?branch=main&label=ci)
 ![Code scanning](https://img.shields.io/github/actions/workflow/status/dimazuien/react-router-scroll-to-top/codeql-analysis.yml?branch=main)
 
-ScrollToTop is a React component that scrolls to the top of a page when the current location gets changed. Since React Router doesn't provide out-of-the-box support for scroll restoration due to [browsers having started handling it on their own](https://majido.github.io/scroll-restoration-proposal/history-based-api.html), this package implements a component for scrolling to the top manually as it is given in [React Router docs](https://reactrouter.com/web/guides/scroll-restoration#scroll-restoration-scroll-to-top).
+ScrollToTop is a React component that scrolls to the top of the page when the location changes. It's for apps that use React Router 5.1 to 7 in declarative mode, with `<BrowserRouter>`, where React Router has no built-in scroll handling.
+
+If your app uses a data router (`createBrowserRouter` with `<RouterProvider>`) or framework mode, use React Router's [`<ScrollRestoration>`](https://reactrouter.com/7.18.7/api/components/ScrollRestoration) instead. It also restores the scroll position when users go back or forward.
 
 ## Usage
 

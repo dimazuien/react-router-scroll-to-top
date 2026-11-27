@@ -22,6 +22,8 @@ pnpm add react-router-scroll-to-top
 
 This package works only in versions of React that support hooks.
 
+It supports React Router 5.1 to 7 in declarative mode (`<BrowserRouter>`). With a data router or in framework mode, use React Router's [`<ScrollRestoration>`](https://reactrouter.com/7.18.7/api/components/ScrollRestoration) instead.
+
 ## Import
 
 From the package you can import:
