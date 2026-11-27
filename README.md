@@ -3,7 +3,7 @@
 <!-- prettier-ignore-start -->
 [![npm Version](https://img.shields.io/npm/v/react-router-scroll-to-top.svg)](https://www.npmjs.com/package/react-router-scroll-to-top)
 ![npm downloads per week](https://img.shields.io/npm/dw/react-router-scroll-to-top)
-![Minified size](https://img.shields.io/bundlephobia/min/react-router-scroll-to-top)
+![Unpacked size](https://img.shields.io/npm/unpacked-size/react-router-scroll-to-top)
 [![Open issues](https://img.shields.io/github/issues-raw/dimazuien/react-router-scroll-to-top)](https://github.com/dimazuien/react-router-scroll-to-top/issues)
 [![Open pull requests](https://img.shields.io/github/issues-pr-raw/dimazuien/react-router-scroll-to-top)](https://github.com/dimazuien/react-router-scroll-to-top/pulls)
 [![GitHub Stars](https://img.shields.io/github/stars/dimazuien/react-router-scroll-to-top)](https://github.com/dimazuien/react-router-scroll-to-top/stargazers)
