@@ -1,11 +1,11 @@
 import {
   render as rtlRender,
   renderHook as rtlRenderHook,
-  RenderOptions,
+  type RenderOptions,
   screen,
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { ReactElement } from 'react';
+import type { ReactElement } from 'react';
 import {
   Link,
   MemoryRouter,
@@ -22,32 +22,21 @@ const render = (element: ReactElement, options?: RenderOptions) =>
 const renderHook = (hook: typeof useScrollToTop, options?: RenderOptions) =>
   rtlRenderHook(hook, { wrapper: MemoryRouter, ...options });
 
+const AnotherPage = () => <div>Hello, world!</div>;
+
 describe('useScrollToTop', () => {
   const user = userEvent.setup();
+  const scrollTo = vi.spyOn(window, 'scrollTo');
 
   it('should trigger scrolling to top when the app is rendered', () => {
-    expect.assertions(2);
-
-    const spy = jest.spyOn(window, 'scrollTo');
-
     renderHook(useScrollToTop);
 
-    expect(window.scrollTo).toHaveBeenCalledTimes(1);
-    expect(window.scrollTo).toHaveBeenLastCalledWith(0, 0);
-
-    spy.mockClear();
+    expect(scrollTo).toHaveBeenCalledExactlyOnceWith(0, 0);
   });
 
   it('should trigger scrolling to top when redirected after link click', async () => {
-    expect.assertions(2);
-
-    function Page() {
-      return <Link to='/another-page'>Link</Link>;
-    }
-    function AnotherPage() {
-      return <div>Hello, world!</div>;
-    }
-    function App() {
+    const Page = () => <Link to='/another-page'>Link</Link>;
+    const App = () => {
       useScrollToTop();
 
       return (
@@ -56,34 +45,23 @@ describe('useScrollToTop', () => {
           <Route path='/another-page' element={<AnotherPage />} />
         </Routes>
       );
-    }
-
-    const spy = jest.spyOn(window, 'scrollTo');
+    };
 
     render(<App />);
 
     await user.click(screen.getByRole('link'));
 
-    expect(window.scrollTo).toHaveBeenCalledTimes(2);
-    expect(window.scrollTo).toHaveBeenLastCalledWith(0, 0);
-
-    spy.mockClear();
+    expect(scrollTo).toHaveBeenCalledTimes(2);
+    expect(scrollTo).toHaveBeenLastCalledWith(0, 0);
   });
 
   it('should not trigger scrolling to top when redirected after link click with false "scrollToTop"', async () => {
-    expect.assertions(1);
-
-    function Page() {
-      return (
-        <Link to='/another-page' state={{ scrollToTop: false }}>
-          Link
-        </Link>
-      );
-    }
-    function AnotherPage() {
-      return <div>Hello, world!</div>;
-    }
-    function App() {
+    const Page = () => (
+      <Link to='/another-page' state={{ scrollToTop: false }}>
+        Link
+      </Link>
+    );
+    const App = () => {
       useScrollToTop();
 
       return (
@@ -92,23 +70,17 @@ describe('useScrollToTop', () => {
           <Route path='/another-page' element={<AnotherPage />} />
         </Routes>
       );
-    }
-
-    const spy = jest.spyOn(window, 'scrollTo');
+    };
 
     render(<App />);
 
     await user.click(screen.getByRole('link'));
 
-    expect(window.scrollTo).toHaveBeenCalledTimes(1);
-
-    spy.mockClear();
+    expect(scrollTo).toHaveBeenCalledOnce();
   });
 
   it('should trigger scrolling to top when redirected by using "history.navigate"', async () => {
-    expect.assertions(2);
-
-    function Page() {
+    const Page = () => {
       const navigate = useNavigate();
 
       return (
@@ -121,11 +93,8 @@ describe('useScrollToTop', () => {
           Button
         </button>
       );
-    }
-    function AnotherPage() {
-      return <div>Hello, world!</div>;
-    }
-    function App() {
+    };
+    const App = () => {
       useScrollToTop();
 
       return (
@@ -134,24 +103,18 @@ describe('useScrollToTop', () => {
           <Route path='/another-page' element={<AnotherPage />} />
         </Routes>
       );
-    }
-
-    const spy = jest.spyOn(window, 'scrollTo');
+    };
 
     render(<App />);
 
     await user.click(screen.getByRole('button'));
 
-    expect(window.scrollTo).toHaveBeenCalledTimes(2);
-    expect(window.scrollTo).toHaveBeenLastCalledWith(0, 0);
-
-    spy.mockClear();
+    expect(scrollTo).toHaveBeenCalledTimes(2);
+    expect(scrollTo).toHaveBeenLastCalledWith(0, 0);
   });
 
   it('should not trigger scrolling to top when redirected by using "history.navigate" with false "scrollToTop"', async () => {
-    expect.assertions(1);
-
-    function Page() {
+    const Page = () => {
       const navigate = useNavigate();
 
       return (
@@ -164,11 +127,8 @@ describe('useScrollToTop', () => {
           Button
         </button>
       );
-    }
-    function AnotherPage() {
-      return <div>Hello, world!</div>;
-    }
-    function App() {
+    };
+    const App = () => {
       useScrollToTop();
 
       return (
@@ -177,16 +137,12 @@ describe('useScrollToTop', () => {
           <Route path='/another-page' element={<AnotherPage />} />
         </Routes>
       );
-    }
-
-    const spy = jest.spyOn(window, 'scrollTo');
+    };
 
     render(<App />);
 
     await user.click(screen.getByRole('button'));
 
-    expect(window.scrollTo).toHaveBeenCalledTimes(1);
-
-    spy.mockClear();
+    expect(scrollTo).toHaveBeenCalledOnce();
   });
 });
