@@ -5,13 +5,6 @@
 - support React 19 ([460d773](https://github.com/dimazuien/react-router-scroll-to-top/commit/460d7735cb752be06b3f2a76b312a66744c4a409))
 - support React Router 7 ([48d337c](https://github.com/dimazuien/react-router-scroll-to-top/commit/48d337cf35bbdaf1541ad8f2c2e011ddab4d1416))
 
-## [1.3.0](https://github.com/dimazuien/react-router-scroll-to-top/compare/v1.2.1...v1.3.0) (2026-11-27)
-
-### Features
-
-- support React 19 ([460d773](https://github.com/dimazuien/react-router-scroll-to-top/commit/460d7735cb752be06b3f2a76b312a66744c4a409))
-- support React Router 7 ([48d337c](https://github.com/dimazuien/react-router-scroll-to-top/commit/48d337cf35bbdaf1541ad8f2c2e011ddab4d1416))
-
 ## [1.2.1](https://github.com/dimazuien/react-router-scroll-to-top/compare/v1.2.0...v1.2.1) (2023-07-31)
 
 ### Bug Fixes
