@@ -18,7 +18,7 @@ This is a React component library that provides scroll-to-top functionality for 
 
 ## Project Structure
 
-```
+```text
 src/
 ├── index.ts                   # Main export file
 ├── ScrollToTop/
