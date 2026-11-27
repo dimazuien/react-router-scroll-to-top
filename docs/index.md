@@ -20,9 +20,9 @@ yarn add react-router-scroll-to-top
 pnpm add react-router-scroll-to-top
 ```
 
-This package works only in versions of React that support hooks.
+It needs React 18 or 19 and React Router 7 or 8, and it imports from the `react-router` package. If your app imports from `react-router-dom` on React Router 7, add `react-router` as a direct dependency too, at the same version. For React Router 5.1 or 6, use version 1 of this package.
 
-It supports React Router 5.1 to 7 in declarative mode (`<BrowserRouter>`). With a data router or in framework mode, use React Router's [`<ScrollRestoration>`](https://reactrouter.com/7.18.7/api/components/ScrollRestoration) instead.
+It works in React Router's declarative mode (`<BrowserRouter>`). With a data router or in framework mode, use React Router's [`<ScrollRestoration>`](https://reactrouter.com/api/components/ScrollRestoration) instead.
 
 ## Import
 
@@ -79,7 +79,7 @@ const App = () => (
 
 ## Usage
 
-That's it. The package doesn't demand you to do anything else. Just keep using `react-router-dom` as before.
+That's it. The package doesn't demand you to do anything else. Just keep using React Router as before.
 
 If in some cases you need to disable scrolling to the top of a page, pass `{ scrollToTop: false }` to the state:
 

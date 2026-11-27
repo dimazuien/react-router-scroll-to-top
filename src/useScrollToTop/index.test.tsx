@@ -6,13 +6,7 @@ import {
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import type { ReactElement } from 'react';
-import {
-  Link,
-  MemoryRouter,
-  Route,
-  Routes,
-  useNavigate,
-} from 'react-router-dom';
+import { Link, MemoryRouter, Route, Routes, useNavigate } from 'react-router';
 
 import useScrollToTop from '.';
 
