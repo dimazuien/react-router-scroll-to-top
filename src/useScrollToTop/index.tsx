@@ -4,8 +4,8 @@ import { useLocation } from 'react-router';
 const useScrollToTop = (): void => {
   const location = useLocation();
   const { pathname } = location;
-  const state = location.state as
-    Readonly<{ scrollToTop?: boolean }> | undefined;
+  // React Router types location.state as `any`, and it's null unless a navigation set it.
+  const state = location.state as Readonly<{ scrollToTop?: boolean }> | null;
 
   useEffect(() => {
     if (state?.scrollToTop === false) return;
