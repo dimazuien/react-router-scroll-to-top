@@ -6,7 +6,7 @@ This is a React component library that provides scroll-to-top functionality for 
 
 ## Technologies & Dependencies
 
-- **Package manager**: npm
+- **Package manager**: pnpm
 - **Language**: TypeScript
 - **Framework**: React (hooks-based)
 - **Router**: React Router for location change detection
