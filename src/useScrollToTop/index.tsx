@@ -5,8 +5,7 @@ const useScrollToTop = (): void => {
   const location = useLocation();
   const { pathname } = location;
   const state = location.state as
-    | Readonly<{ scrollToTop?: boolean }>
-    | undefined;
+    Readonly<{ scrollToTop?: boolean }> | undefined;
 
   useEffect(() => {
     if (state?.scrollToTop === false) return;
